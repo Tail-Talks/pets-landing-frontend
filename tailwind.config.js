@@ -87,6 +87,11 @@ module.exports = {
           '-webkit-text-fill-color': 'transparent',
           display: 'inline-block',
         },
+        '@media (max-height: 700px)': {
+        '.hide-on-small-height': {
+          display: 'none',
+        },
+      },
       };
       addUtilities(newUtilities, ['responsive', 'hover']);
     },

@@ -34,38 +34,57 @@ export default function PreRegistrationModal({ isOpen, closeModal }: PreRegistra
       isOpen={isOpen}
       onRequestClose={closeModal}
       shouldCloseOnOverlayClick={true}
-      className='flex justify-center items-center h-full'
-      overlayClassName="fixed inset-0 z-20 bg-black-80 dark:bg-transparent flex justify-center items-center"
+      className='flex justify-center items-center mt-[60px] sm:mt-[80px] lg:mt-[115px] xl:mt-[90px] '
+      overlayClassName="fixed inset-0 z-20 bg-black-80  flex justify-center items-center"
     >
-      <div className='mx-auto w-[532px] h-[730px] flex flex-col justify-between items-center bg-white rounded-2xl py-12'>
+      <div className='mx-auto xs:w-[370px] sm:w-[415px] xl:w-[532px] flex flex-col justify-between items-center bg-white rounded-2xl py-[30px] lg:py-[25px] xl:py-[40px] px-[30px] lg:px-[25px] xl:px-[35px] relative'>
+        <button
+          className='absolute top-0 right-0 p-2'
+          onClick={closeModal}
+        >
+          <svg
+            className='w-6 h-6 lg:w-8 lg:h-8'
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
         <img
           src={PreregistrationPigs}
           alt="Hamsters"
-          className='w-[442px] h-[237px] rounded-2xl'
+          className='w-[320px] xl:w-[400px]  h-[185px] xl:h-[220px]  rounded-2xl hide-on-small-height'
         />
-        <div className='mx-11'>
-          <h4 className='text-2xl font-medium text-center'>
+        <div className='mt-[15px] md:mt-[20px] xl:mt-[25px]'>
+          <h4 className='text-xl lg:text-2xl font-medium text-center'>
             Укажите ваш e-mail
           </h4>
-          <p className='font-light text-lg text-gray-600 text-center'>
+          <p className='font-light text-base xl:text-lg text-gray-600 text-center mt-[20px] md:mt-[15px] xl:mt-[10px] mb-[15px] xl:mb-[20px]  xl:w-full'>
             Мы пришлем вам приглашения, как только наша социальная сеть для домашних животных будет готова
           </p>
         </div>
-        <form onSubmit={handleSubmit} className='w-[409px] h-[212px] flex flex-col'>
-          <div className='w-full h-[59px] bg-bread rounded-2xl p-1 mb-4'>
+        <form onSubmit={handleSubmit} className='w-full flex flex-col'>
+          <div className='w-full  lg:h-[50px] bg-bread rounded-2xl p-1 mb-[15px]'>
             <input
               type="email"
               placeholder='E-mail'
-              className='w-full h-full bg-clip-border focus:ring-4 rounded-xl py-5 px-6'
+              className='w-full h-full bg-clip-border focus:ring-4 rounded-xl py-3 lg:py-4 px-4 lg:px-5'
               value={email}
               onChange={handleChangeEmail}
             />
           </div>
-          <div className='w-full h-[59px] bg-bread rounded-2xl p-1 mb-4'>
+          <div className='w-full lg:h-[50px] bg-bread rounded-2xl p-1 mb-[25px]'>
             <input
               type="text"
               placeholder='Логин (необязательно)'
-              className='w-full h-full bg-clip-border focus:ring-4 rounded-xl py-5 px-6'
+              className='w-full h-full bg-clip-border focus:ring-4 rounded-xl py-3 lg:py-5 px-4 lg:px-6'
               value={username}
               onChange={handleChangeUsername}
             />
@@ -73,7 +92,7 @@ export default function PreRegistrationModal({ isOpen, closeModal }: PreRegistra
           <ButtonBread
             name='Отправить'
             type='submit'
-            className='font-sans font-bold text-lg w-full h-[59px] rounded-2xl bg-bread mt-0'
+            className='font-sans font-bold text-lg w-full h-[44px] lg:h-[42px] xl:h-[50px] rounded-2xl bg-bread mt-0'
           />
         </form>
       </div>
