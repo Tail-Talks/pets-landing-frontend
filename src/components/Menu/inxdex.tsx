@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import Modal from 'react-modal'
 import ButtonBread from '../UI/ButtonBread'
+import { Link } from 'react-router-dom'
 
 //SVG
 import vk from '../../assets/svg/footer/vk.svg'
 import vcru from '../../assets/svg/footer/vcru.svg'
 import telegram from '../../assets/svg/footer/telegram.svg'
+import { useTheme } from '../../context/ThemeContext'
 
 interface MenuProps {
   isOpen: boolean,
@@ -13,6 +15,7 @@ interface MenuProps {
 }
 
 export default function Menu({ isOpen, closeModal }: MenuProps) {
+  const { toggleTheme } = useTheme();
 
   // Убираем прокрутку основного контента при открытии модального окна
   useEffect(() => {
@@ -22,6 +25,10 @@ export default function Menu({ isOpen, closeModal }: MenuProps) {
       document.body.classList.remove('overflow-hidden')
     }
   }, [isOpen])
+
+  const handleCloseMenu = () => {
+    closeModal()
+  }
 
   return (
     <Modal
@@ -35,26 +42,31 @@ export default function Menu({ isOpen, closeModal }: MenuProps) {
           <div className='flex flex-col gap-4'>
             <a
               href="#mission"
+              onClick={handleCloseMenu}
               className='font-Rubik text-black-80 dark:text-white font-medium'>
               Наша миссия
             </a>
             <a
               href="#how_it_works"
+              onClick={handleCloseMenu}
               className='font-Rubik text-black-80 dark:text-white font-medium'>
               Принцип работы
             </a>
             <a
               href="#roadmap"
+              onClick={handleCloseMenu}
               className='font-Rubik  text-black-80 dark:text-white font-medium'>
               Дорожная карта
             </a>
             <a
               href="#community"
+              onClick={handleCloseMenu}
               className='font-Rubik text-black-80 dark:text-white font-medium'>
               Сообщество
             </a>
             <a
               href="#faq"
+              onClick={handleCloseMenu}
               className='font-Rubik text-black-80 dark:text-white font-medium'>
               FAQ
             </a>
@@ -80,22 +92,22 @@ export default function Menu({ isOpen, closeModal }: MenuProps) {
           </div>
           <div className='flex flex-col gap-3'>
             <a href="" className='text-sm font-medium font-Rubik dark:text-white'>Безопасность данных Tail Talks</a>
-            <a href="" className='text-sm font-medium font-Rubik dark:text-white'>Социальная ответственность</a>
+            <Link to="/socresp" className='text-sm font-medium font-Rubik dark:text-white'>Социальная ответственность</Link>
             <a href="" className='text-sm font-medium font-Rubik dark:text-white'>Благотворительность</a>
           </div>
           <ButtonBread
-            onClick={() => window.open('https://t.me/tailtalks_official', '_blank')}
+            onClick={() => window.open('https://t.me/tailtalksrus', '_blank')}
             name='Сообщество Telegram'
             className='w-[19.5rem] h-[3rem] text-base mt-0' />
           <div className='flex flex-col items-start gap-3'>
-            <select className='bg-white dark:bg-black-50 Variable font-Rubik text-[#000000]  dark:text-white text-opacity-60 dark:text-opacity-60 text-sm rounded-md'>
+            {/* <select className='bg-white dark:bg-black-50 Variable font-Rubik text-[#000000]  dark:text-white text-opacity-60 dark:text-opacity-60 text-sm rounded-md'>
               <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm'>English</option>
               <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm'>Russian</option>
               <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm'>German</option>
-            </select>
-            <select className='bg-white dark:bg-black-50 Variable font-Rubik text-[#000000]  dark:text-white text-opacity-60 dark:text-opacity-60 text-sm rounded-md'>
-              <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm'>Светлая тема</option>
-              <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm'>Темная тема</option>
+            </select> */}
+            <select className='bg-white dark:bg-black-50 Variable font-Rubik text-[#000000]  dark:text-white text-opacity-60 dark:text-opacity-60 text-sm rounded-md' onChange={() => toggleTheme()}>
+              <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm' value="dark">Темная тема</option>
+              <option className='font-Rubik dark:text-white dark:text-opacity-60 text-sm' value="light">Светлая тема</option>
             </select>
           </div>
         </div>
